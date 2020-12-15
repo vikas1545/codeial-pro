@@ -1,0 +1,19 @@
+<!-- This comment related portion is included in _post.ejs file  -->
+
+<!-- Id is added for Ajax -->
+<li id="comment-<%= comment._id%>">    
+    <p>
+       <% if(locals.user && locals.user.id==comment.user.id) { %>
+            <small>
+                <!-- class Added for ajax -->
+                <a class="delete-comment-button" href="/comments/destroy/<%= comment.id %>">Delete Comment</a>
+            </small>
+           
+       <% } %>
+        <%= comment.content %>
+        <br>
+        <small>
+            <%= comment.user.name %>
+        </small>
+     </p>
+    </li>

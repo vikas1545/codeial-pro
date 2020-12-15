@@ -1,7 +1,22 @@
         <link rel="stylesheet" href="/css/user_profile.css">
-        <h1>
-            Codeial / Profile Page
-        </h1>
+        <!-- user.avtar is static path defined inside user.js of model file   -->
+        <img src="<%= user.avatar %>" alt="<% user.name %>" width="100">
 
-        <p><%= user.name %></p>
-        <p><%= user.email %></p>
+        <% if(user.id==profile_user.id) { %>
+            <!-- If users matches then only show the form -->
+            <!-- The enctype attribute specifies how the form-data should be encoded when submitting it to the server. -->
+            <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST">  
+                <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>
+
+                <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required> 
+
+                <input type="file" name="avatar" placeholder="profile Picture">
+                <input type="submit" value="update">
+            </form>
+        <%} else {%>        
+            <!-- else show only the profile info -->           
+        <p><%= profile_user.name %></p>
+        <p><%= profile_user.email %></p>
+        
+        <% } %>    
+

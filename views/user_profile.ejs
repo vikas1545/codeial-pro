@@ -1,8 +1,11 @@
         <link rel="stylesheet" href="/css/user_profile.css">
         <!-- user.avtar is static path defined inside user.js of model file   -->
-        <img src="<%= user.avatar %>" alt="<% user.name %>" width="100">
+        <!-- <img src="<%= user.avatar %>" alt="<% user.name %>" width="100"> -->
 
         <% if(user.id==profile_user.id) { %>
+
+        <img src="<%= user.avatar %>" alt="<% user.name %>" width="100">
+
             <!-- If users matches then only show the form -->
             <!-- The enctype attribute specifies how the form-data should be encoded when submitting it to the server. -->
             <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST">  
@@ -14,7 +17,9 @@
                 <input type="submit" value="update">
             </form>
         <%} else {%>        
-            <!-- else show only the profile info -->           
+            <!-- else show only the profile info -->  
+        <img src="<%= profile_user.avatar %>" alt="<% user.name %>" width="100">
+
         <p><%= profile_user.name %></p>
         <p><%= profile_user.email %></p>
         

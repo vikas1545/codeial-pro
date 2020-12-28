@@ -1,7 +1,6 @@
 const User = require('../../../models/user');   
 const jwt = require('jsonwebtoken');
-
-
+    
 module.exports.createSession = async function (req, res) {
 
     try {
@@ -19,8 +18,8 @@ module.exports.createSession = async function (req, res) {
             data :{
                 //user.toJSON() decrept the token by using key 'codeial' specified with secretOrKey
                 token: jwt.sign(user.toJSON(),'codeial',{
-                    expiresIn:'10000'  
-                })
+                    expiresIn:'100000'  
+                })  
             }
         })
     }

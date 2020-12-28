@@ -7,8 +7,9 @@ const User = require('../models/user');
 
 // creating options
 let opts = {
-    jwtFromRequest:ExtractJWT.fromAuthHeaderAsBearerToken,
-    secretOrKey: 'codeial'
+    //creates a new extractor that looks for the JWT in the authorization header with the scheme 'bearer'
+    jwtFromRequest:ExtractJWT.fromAuthHeaderAsBearerToken(),
+    secretOrKey: 'codeial'  // codeial is public key 
 }
 
 passport.use(new JWTStrategy(opts,function(jwtPayload,done){
